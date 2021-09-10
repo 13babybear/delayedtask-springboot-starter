@@ -18,15 +18,15 @@ public class DelayedQueue {
 
     /**
      * 添加到延时队列
-     * @param data          任务数据
+     * @param param          任务参数
      * @param delayTime     延时时间
      * @param timeUnit      时间单位
      * @param taskClazz     任务类型
      * @param <T>
      */
-    public <T> void add(T data, long delayTime, TimeUnit timeUnit, Class taskClazz) {
+    public <T> void add(T param, long delayTime, TimeUnit timeUnit, Class taskClazz) {
         RBlockingQueue<T> blockingQueue = redissonClient.getBlockingQueue(taskClazz.getSimpleName());
         RDelayedQueue<T> delayedQueue = redissonClient.getDelayedQueue(blockingQueue);
-        delayedQueue.offer(data, delayTime, timeUnit);
+        delayedQueue.offer(param, delayTime, timeUnit);
     }
 }

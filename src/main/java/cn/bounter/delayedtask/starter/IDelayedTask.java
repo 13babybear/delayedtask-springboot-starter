@@ -7,7 +7,7 @@ public interface IDelayedTask<T> {
 
     /**
      * 任务处理方法
-     * @param data      任务执行数据
+     * @param param      任务执行参数
      */
-    void execute(T data);
+    void execute(T param);
 }
